@@ -9,11 +9,11 @@ class CreateCustomers < ActiveRecord::Migration[7.1]
       t.string :point_of_contact
       t.string :contact_information
       t.string :zip_code
-      t.string :last_check_in
+      t.date :last_check_in
       t.date :next_check_in
       t.text :notes
       t.integer :interest_level
-      t.string :bar
+      t.boolean :bar
       t.boolean :liquor_store
 
       t.timestamps
