@@ -141,19 +141,19 @@ describe "Customers API" do
 
     expect(response).to be_successful
 
-    expect(customer.name).to beq(customer_params[:name])
-    expect(customer.street_address).to beq(customer_params[:street_address])
-    expect(customer.city).to beq(customer_params[:city])
-    expect(customer.community).to beq(customer_params[:community])
-    expect(customer.state).to beq(customer_params[:state])
-    expect(customer.first_name).to beq(customer_params[:first_name])
-    expect(customer.phone_number).to beq(customer_params[:phone_number])
-    expect(customer.zip_code).to beq(customer_params[:zip_code])
-    expect(customer.last_check_in).to beq(customer_params[:last_check_in])
-    expect(customer.next_check_in).to beq(customer_params[:next_check_in])
-    expect(customer.notes).to beq(customer_params[:notes])
-    expect(customer.interest_level).to beq(customer_params[:interest_level])
-    expect(customer.bar).to beq(customer_params[:bar])
-    expect(customer.liquor_store).to beq(customer_params[:liquor_store])
+    expect(customer.name).to eq(customer_params[:name])
+    expect(customer.address).to eq(customer_params[:address])
+    expect(customer.city).to eq(customer_params[:city])
+    expect(customer.county).to eq(customer_params[:county])
+    expect(customer.state).to eq(customer_params[:state])
+    expect(customer.point_of_contact).to eq(customer_params[:point_of_contact])
+    expect(customer.contact_information).to eq(customer_params[:contact_information])
+    expect(customer.zip_code).to eq(customer_params[:zip_code])
+    expect(customer.last_check_in).to eq(customer_params[:last_check_in])
+    expect(customer.next_check_in).to eq(customer_params[:next_check_in])
+    expect(customer.notes).to eq(customer_params[:notes])
+    expect(customer.interest_level).to eq(customer_params[:interest_level])
+    expect(customer.bar).to eq(customer_params[:bar])
+    expect(customer.liquor_store).to eq(customer_params[:liquor_store])
   end
 end
