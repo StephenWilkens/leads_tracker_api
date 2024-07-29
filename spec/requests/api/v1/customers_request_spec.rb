@@ -134,7 +134,7 @@ describe "Customers API" do
       liquor_store: Faker::Boolean.boolean,
     })
 
-    headers = {"CONTENT_TYPE" => "application/json"}
+    headers = { "CONTENT_TYPE" => "application/json" }
 
     post "/api/v1/customers", headers: headers, params: JSON.generate(customer: customer_params)
     customer = Customer.last
@@ -155,5 +155,31 @@ describe "Customers API" do
     expect(customer.interest_level).to eq(customer_params[:interest_level])
     expect(customer.bar).to eq(customer_params[:bar])
     expect(customer.liquor_store).to eq(customer_params[:liquor_store])
+  end
+
+  it "can update an existing customer" do
+    id = create(:customer).id
+    previous_name = Customer.last.name
+    customer_params = { name: "Phillip" }
+    headers = { "CONTENT_TYPE" => "application/json" }
+
+    patch "/api/v1/customers/#{id}", headers: headers, params: JSON.generate({ customer: customer_params })
+    customer = Customer.find_by(id: id)
+
+    expect(response).to be_successful
+    expect(customer.name).to_not eq(previous_name)
+    expect(customer.name).to eq("Phillip")
+  end
+
+  it "can destroy a customer" do
+    customer = create(:customer)
+
+    expect(Customer.count).to eq(1)
+
+    delete "/api/v1/customers/#{customer.id}"
+
+    expect(response).to be_successful
+    expect(Customer.count).to eq(0)
+    expect { Customer.find(customer.id) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 end
