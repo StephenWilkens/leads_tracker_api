@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: leads_tracker_api_production
   username: leads_tracker_api
   password: <%= ENV["LEADS_TRACKER_API_DATABASE_PASSWORD"] %>
